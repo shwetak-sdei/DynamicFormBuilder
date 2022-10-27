@@ -1,0 +1,23 @@
+<div class="readmin-panel">
+  <div class="d-flex justify-content-between panel-title align-items-center">
+    <h2 class="page_title">Assessment</h2>
+    <button *ngIf="addPermission" mat-raised-button color="primary" class="add-primary-btn" (click)="openDialog()">
+      <span>Add New</span></button>
+  </div>
+  <form class="readmin-form custom_form">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="searchText" name="searchText" (input)="applyFilter($event.target.value)"
+            placeholder="Search">
+        </mat-form-field>
+      </div>
+      <div class="col-md-2 filter-btn">
+        <button type="button" class="clear-btn" color="accent" (click)="clearFilters()" mat-raised-button>Clear All</button>
+      </div>
+    </div>
+  </form>
+  <app-data-table class="mt-3 d-block table-responsive" [inputColumns]="displayedColumns" [inputSource]="documentData" [inputMeta]="metaData" [inputButtons]='actionButtons'
+    (onChange)="onPageOrSortChange($event)" (onTableActionClick)="onTableActionClick($event)">
+  </app-data-table>
+</div>
